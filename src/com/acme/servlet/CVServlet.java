@@ -33,8 +33,20 @@ public class CVServlet extends HttpServlet {
 
     private void checkAplicant(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String breastString = request.getParameter("breast");
-		Integer breast = Integer.valueOf(breastString);
+        Integer breast = -1;
+        try {
+		  breast = Integer.valueOf(breastString);
+        } catch(NumberFormatException e) {
+            
+        }
 		
+		if (breast < 50) {
+		    try {
+                getServletContext().getRequestDispatcher("/cv.html").forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
+		}
 		String name = request.getParameter("name");
 		
 		if (breast > 90) {
