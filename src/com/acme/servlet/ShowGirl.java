@@ -1,6 +1,9 @@
 package com.acme.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -26,6 +29,20 @@ public class ShowGirl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    
+	    
+        InputStream inputStream = getServletContext().getResourceAsStream("/WEB-INF/mystyle");
+        InputStreamReader isr = new InputStreamReader(inputStream);
+        BufferedReader reader = new BufferedReader(isr);
+        String text = "";
+         
+        while ((text = reader.readLine()) != null) {
+            response.getOutputStream().println(text);
+        }
+
+
+	    
+	    
 		List<Girl> girls = (List<Girl>) getServletContext().getAttribute(CVServlet.GIRLS);
 		String name = request.getParameter("name");
 		if (name == null) {
@@ -37,7 +54,8 @@ public class ShowGirl extends HttpServlet {
 		} else {
 	        for (Girl girl : girls) {
 	            if (girl.getName().equals(name)) {
-	                response.getOutputStream().println("<style>.box {  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  width: 180px;   float: left;    margin: 8px;    padding: 8px;   -moz-box-shadow: 5px 5px 10px 3px #ccc; -webkit-box-shadow: 5px 5px 10px 3px #CCC;  box-shadow: 5px 5px 10px 3px #CCC;      padding: 8px 35px 8px 14px; margin-bottom: 18px;    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  background-color: #FCF8E3;  border: 1px solid #FBEED5;  -webkit-border-radius: 4px; -moz-border-radius: 4px;    border-radius: 4px; color: #C09853;}</style>");
+	                
+	                //response.getOutputStream().println("<style>.box {  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  width: 180px;   float: left;    margin: 8px;    padding: 8px;   -moz-box-shadow: 5px 5px 10px 3px #ccc; -webkit-box-shadow: 5px 5px 10px 3px #CCC;  box-shadow: 5px 5px 10px 3px #CCC;      padding: 8px 35px 8px 14px; margin-bottom: 18px;    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  background-color: #FCF8E3;  border: 1px solid #FBEED5;  -webkit-border-radius: 4px; -moz-border-radius: 4px;    border-radius: 4px; color: #C09853;}</style>");
                     response.getOutputStream().println("<div class='box' >");
                     response.getOutputStream().println("<img width='100px' height='100px'  src='" + girl.getImageUrl() + "' />");
                     response.getOutputStream().println(girl.getName());
