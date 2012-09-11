@@ -43,8 +43,13 @@ public class CVFormServlet extends HttpServlet {
                     + msg + " </div>");
         }
         
+        String value = request.getParameter("name");
+        if (value == null) {
+            value="";
+        }
+        
         response.getOutputStream().println("<form action=\"CVServlet\" method=\"post\">");
-        response.getOutputStream().println(" <br>Name: <input type=\"text\" name=\"name\" />");
+        response.getOutputStream().println(" <br>Name: <input type=\"text\" name=\"name\" value=\"" + value + "\" />");
         response.getOutputStream().println(" <br>Breast Size: <input type=\"text\" name=\"breast\" />");
         response.getOutputStream().println(" <br>Basket type: <select name=\"basket\">");
         response.getOutputStream().println(" <option value=\"A\" >A</option>");
