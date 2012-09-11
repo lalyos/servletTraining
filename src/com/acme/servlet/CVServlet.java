@@ -39,10 +39,12 @@ public class CVServlet extends HttpServlet {
         } catch(NumberFormatException e) {
             
         }
+		log("breast size:" + breast);
 		
 		if (breast < 50) {
 		    try {
-                getServletContext().getRequestDispatcher("/cv.html").forward(request, response);
+		        log("tryind to forward... to '/cv'");
+                getServletContext().getRequestDispatcher("/cv").forward(request, response);
             } catch (ServletException e) {
                 e.printStackTrace();
             }

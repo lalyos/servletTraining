@@ -24,6 +24,10 @@ public class CVFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        generateForm(response);	
+    }
+
+    private void generateForm(HttpServletResponse response) throws IOException {
         response.getOutputStream().println("<!DOCTYPE html>");
         response.getOutputStream().println("<html>");
         response.getOutputStream().println("<head>");
@@ -45,13 +49,14 @@ public class CVFormServlet extends HttpServlet {
         response.getOutputStream().println("</form>");
         response.getOutputStream().println("");
         response.getOutputStream().println("</body>");
-        response.getOutputStream().println("</html>");	}
+        response.getOutputStream().println("</html>");
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+        generateForm(response);   
 	}
 
 }
