@@ -24,10 +24,10 @@ public class CVFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        generateForm(response);	
+        generateForm(request, response);	
     }
 
-    private void generateForm(HttpServletResponse response) throws IOException {
+    private void generateForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getOutputStream().println("<!DOCTYPE html>");
         response.getOutputStream().println("<html>");
         response.getOutputStream().println("<head>");
@@ -36,6 +36,13 @@ public class CVFormServlet extends HttpServlet {
         response.getOutputStream().println("</head>");
         response.getOutputStream().println("<body>");
         response.getOutputStream().println("");
+        
+        String msg = (String) request.getAttribute("errorMessage");
+        if (msg != null) {
+            response.getOutputStream().println("<div style='color: red;'>"
+                    + msg + " </div>");
+        }
+        
         response.getOutputStream().println("<form action=\"CVServlet\" method=\"post\">");
         response.getOutputStream().println(" <br>Name: <input type=\"text\" name=\"name\" />");
         response.getOutputStream().println(" <br>Breast Size: <input type=\"text\" name=\"breast\" />");
@@ -56,7 +63,7 @@ public class CVFormServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        generateForm(response);   
+        generateForm(request, response);   
 	}
 
 }

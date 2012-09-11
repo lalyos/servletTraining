@@ -44,6 +44,7 @@ public class CVServlet extends HttpServlet {
 		if (breast < 50) {
 		    try {
 		        log("tryind to forward... to '/cv'");
+		        request.setAttribute("errorMessage", "Please enter a valid number into the breast field!");
                 getServletContext().getRequestDispatcher("/cv").forward(request, response);
             } catch (ServletException e) {
                 e.printStackTrace();
