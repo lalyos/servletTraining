@@ -147,4 +147,14 @@
     <servlet-name>ShowGirl</servlet-name>
     <url-pattern>/showGirl</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CVFormServlet</display-name>
+    <servlet-name>CVFormServlet</servlet-name>
+    <servlet-class>com.acme.servlet.CVFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CVFormServlet</servlet-name>
+    <url-pattern>/cv</url-pattern>
+  </servlet-mapping>
 </web-app>
