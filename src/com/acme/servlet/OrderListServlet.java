@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class OrderListServlet
  */
-public class OrderListServlet extends HttpServlet {
+public class OrderListServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -27,17 +27,34 @@ public class OrderListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	      Map<Long, Order> orders = (Map<Long, Order>) getServletContext().getAttribute("orders");
+	       includeResource(response, "WEB-INF/boot-head");
+
+	      Map<Long, Order> orders = getOrders();
 
 	      response.setContentType("text/html");
-          response.getWriter().println("<h2>list of Orders</h2> <ul>");
+          response.getOutputStream().println("<h2>list of Orders</h2> <table class=\"table table-striped\" >");
+
+          response.getOutputStream().println("<thead><tr><th>#</th> <th>girl</th> <th>food</th> <th>state</th> </tr></thead>");
+
 	      for (Order order : orders.values()) {
-	           response.getWriter().println("<li>" + order.toString() + "</li>");
+	           response.getOutputStream().println(String.format("<tr><td>%d</td> <td>%s</td> <td>%s</td> <td>%s</td> </tr>"
+	                   ,order.getId() ,order.getGirl().getName() ,order.getFood() ,getStateHtml(order.getIsFulfilled()) ));
 	      }
-          response.getWriter().println("</ul>");
+          response.getOutputStream().println("</table>");
+          includeResource(response, "WEB-INF/boot-foot");
+
 	}
 
-	/**
+	private Object getStateHtml(boolean isFulfilled) {
+        if (isFulfilled) {
+            return "<span class=\"label label-success\">Fulfilled</span>";
+        } else {
+            return "<span class=\"label label-warning\">Pending</span>";
+            
+        }
+    }
+
+    /**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

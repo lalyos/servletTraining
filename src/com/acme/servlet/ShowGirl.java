@@ -54,7 +54,7 @@ public class ShowGirl extends BaseServlet {
 	                
 	                //response.getOutputStream().println("<style>.box {  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  width: 180px;   float: left;    margin: 8px;    padding: 8px;   -moz-box-shadow: 5px 5px 10px 3px #ccc; -webkit-box-shadow: 5px 5px 10px 3px #CCC;  box-shadow: 5px 5px 10px 3px #CCC;      padding: 8px 35px 8px 14px; margin-bottom: 18px;    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  background-color: #FCF8E3;  border: 1px solid #FBEED5;  -webkit-border-radius: 4px; -moz-border-radius: 4px;    border-radius: 4px; color: #C09853;}</style>");
                     response.getOutputStream().println("<div class='box' >");
-                    response.getOutputStream().println("<img width='100px' height='100px'  src='" + girl.getImageUrl() + "' />");
+                    response.getOutputStream().println("<img class=\"img-rounded\" width='100px' height='100px'  src='" + girl.getImageUrl() + "' />");
                     response.getOutputStream().println(girl.getName());
                     response.getOutputStream().println("</div>");
 	            }
