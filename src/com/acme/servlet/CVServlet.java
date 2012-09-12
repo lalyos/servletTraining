@@ -1,7 +1,6 @@
 package com.acme.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CVServlet
  */
-public class CVServlet extends HttpServlet {
-    static final String GIRLS = "girls";
+public class CVServlet extends BaseServlet {
     private static final long serialVersionUID = 1L;
        
     /**
@@ -56,11 +54,7 @@ public class CVServlet extends HttpServlet {
 		    response.getOutputStream().println("Welcome in the Hooters team : " + name );
 		    
 		    Girl girl = new Girl(name, breast, request.getParameter("basket"));
-		    List<Girl> girls = (List<Girl>) getServletContext().getAttribute(GIRLS);
-		    if (girls == null) {
-		        girls = new ArrayList<Girl>();
-		        getServletContext().setAttribute(GIRLS, girls);
-		    }
+		    List<Girl> girls = getGirls();
 		    girls.add(girl);
 		    
 		} else{
@@ -69,10 +63,12 @@ public class CVServlet extends HttpServlet {
 		}
     }
 
-	/**
+    /**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    
+	    log("choosen: " + request.getParameter("sub"));
 	    checkAplicant(request, response);
 	}
 

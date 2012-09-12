@@ -1,26 +1,25 @@
 package com.acme.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.xml.internal.rngom.parse.host.Base;
-
 /**
- * Servlet implementation class GirlsServlet
+ * Servlet implementation class MyOrdersServlet
  */
-public class GirlsServlet extends BaseServlet {
+public class MyOrdersServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GirlsServlet() {
+    public MyOrdersServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,20 +28,25 @@ public class GirlsServlet extends BaseServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Girl> girls = getGirls();
-		if(girls == null || girls.isEmpty()) {
-		    response.getOutputStream().println("<h2>No girls yet.</h2>");
-		} else {
-            response.getOutputStream().println("<h2>List of girls</h2> <ul>");
-    		for (Girl girl : girls) {
-                //response.getOutputStream().println("<li>" + girl + "</li>");
-    		    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/showGirl");
-    		    request.setAttribute("name", girl.getName());
-    		    dispatcher.include(request, response);
+        Map<Long, Order> orders = getOrders();
+        List<Order> myOrders = new ArrayList<Order>();
+        
+        String myName = getUserName(request);
+        response.setContentType("text/html");
+
+        for (Order order : orders.values()) {
+            if (order.getGirl().getName().equals(myName) && ! order.getIsFulfilled()) {
+                myOrders.add(order);
             }
-            response.getOutputStream().println("</ul");
-            response.setContentType("text/html");
-		}
+        }
+        
+        response.getWriter().println("<h2>list of MY Orders</h2> <ul>");
+        for (Order order : myOrders) {
+             response.getWriter().println("<li> <a href='fulfill?orderId=" + order.getId() 
+        + "'>fulfill </a>" + order.toString() + "</li>");
+        }
+        response.getWriter().println("</ul>");
+
 	}
 
 	/**

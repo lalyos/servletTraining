@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ShowGirl
  */
-public class ShowGirl extends HttpServlet {
+public class ShowGirl extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -40,10 +40,7 @@ public class ShowGirl extends HttpServlet {
             response.getOutputStream().println(text);
         }
 
-
-	    
-	    
-		List<Girl> girls = (List<Girl>) getServletContext().getAttribute(CVServlet.GIRLS);
+		List<Girl> girls = getGirls();
 		String name = request.getParameter("name");
 		if (name == null) {
 		    name = (String) request.getAttribute("name");
