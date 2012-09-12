@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class BaseServlet extends HttpServlet {
 
-    protected static final String GIRLS = "girls";
+    public static final String GIRLS = "girls";
 
     String getUserName(HttpServletRequest request) {
         return (String) request.getSession().getAttribute("userName");
