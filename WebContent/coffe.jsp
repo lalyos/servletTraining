@@ -83,7 +83,7 @@ long getMinutes() {
   <div class="row">
   
   <div class="progress progress-striped active span3">
-    <div class="bar" style="width: <%=100 - minutes *100 / 60%>%;"></div>
+    <div class="bar" style="width: <%=100 - getMinutes() *100 / 60%>%;"></div>
   </div>
 </div>
 
