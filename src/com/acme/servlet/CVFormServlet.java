@@ -28,18 +28,18 @@ public class CVFormServlet extends HttpServlet {
     }
 
     private void generateForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.getOutputStream().println("<!DOCTYPE html>");
-        response.getOutputStream().println("<html>");
-        response.getOutputStream().println("<head>");
-        response.getOutputStream().println("<meta charset=\"UTF-8\">");
-        response.getOutputStream().println("<title>Insert title here</title>");
-        response.getOutputStream().println("</head>");
-        response.getOutputStream().println("<body>");
-        response.getOutputStream().println("");
+        response.getWriter().println("<!DOCTYPE html>");
+        response.getWriter().println("<html>");
+        response.getWriter().println("<head>");
+        response.getWriter().println("<meta charset=\"UTF-8\">");
+        response.getWriter().println("<title>Insert title here</title>");
+        response.getWriter().println("</head>");
+        response.getWriter().println("<body>");
+        response.getWriter().println("");
         
         String msg = (String) request.getAttribute("errorMessage");
         if (msg != null) {
-            response.getOutputStream().println("<div style='color: red;'>"
+            response.getWriter().println("<div style='color: red;'>"
                     + msg + " </div>");
         }
         
@@ -48,20 +48,20 @@ public class CVFormServlet extends HttpServlet {
             value="";
         }
         
-        response.getOutputStream().println("<form action=\"CVServlet\" method=\"post\">");
-        response.getOutputStream().println(" <br>Name: <input type=\"text\" name=\"name\" value=\"" + value + "\" />");
-        response.getOutputStream().println(" <br>Breast Size: <input type=\"text\" name=\"breast\" />");
-        response.getOutputStream().println(" <br>Basket type: <select name=\"basket\">");
-        response.getOutputStream().println(" <option value=\"A\" >A</option>");
-        response.getOutputStream().println(" <option value=\"B\" >B</option>");
-        response.getOutputStream().println(" <option value=\"C\" >C</option>");
-        response.getOutputStream().println(" <option value=\"D\" >D</option>");
-        response.getOutputStream().println("</select>");
-        response.getOutputStream().println(" <br><input type=\"submit\" value=\"Send\"/>");
-        response.getOutputStream().println("</form>");
-        response.getOutputStream().println("");
-        response.getOutputStream().println("</body>");
-        response.getOutputStream().println("</html>");
+        response.getWriter().println("<form action=\"CVServlet\" method=\"post\">");
+        response.getWriter().println(" <br>Name: <input type=\"text\" name=\"name\" value=\"" + value + "\" />");
+        response.getWriter().println(" <br>Breast Size: <input type=\"text\" name=\"breast\" />");
+        response.getWriter().println(" <br>Basket type: <select name=\"basket\">");
+        response.getWriter().println(" <option value=\"A\" >A</option>");
+        response.getWriter().println(" <option value=\"B\" >B</option>");
+        response.getWriter().println(" <option value=\"C\" >C</option>");
+        response.getWriter().println(" <option value=\"D\" >D</option>");
+        response.getWriter().println("</select>");
+        response.getWriter().println(" <br><input type=\"submit\" value=\"Send\"/>");
+        response.getWriter().println("</form>");
+        response.getWriter().println("");
+        response.getWriter().println("</body>");
+        response.getWriter().println("</html>");
     }
 
 	/**

@@ -37,7 +37,7 @@ public class ShowGirl extends BaseServlet {
         String text = "";
          
         while ((text = reader.readLine()) != null) {
-            response.getOutputStream().println(text);
+            response.getWriter().println(text);
         }
 
 		List<Girl> girls = getGirls();
@@ -47,16 +47,16 @@ public class ShowGirl extends BaseServlet {
 		}
 		
 		if (girls == null || girls.isEmpty()) {
-		    response.getOutputStream().println("no such girl found: " + name);
+		    response.getWriter().println("no such girl found: " + name);
 		} else {
 	        for (Girl girl : girls) {
 	            if (girl.getName().equals(name)) {
 	                
-	                //response.getOutputStream().println("<style>.box {  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  width: 180px;   float: left;    margin: 8px;    padding: 8px;   -moz-box-shadow: 5px 5px 10px 3px #ccc; -webkit-box-shadow: 5px 5px 10px 3px #CCC;  box-shadow: 5px 5px 10px 3px #CCC;      padding: 8px 35px 8px 14px; margin-bottom: 18px;    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  background-color: #FCF8E3;  border: 1px solid #FBEED5;  -webkit-border-radius: 4px; -moz-border-radius: 4px;    border-radius: 4px; color: #C09853;}</style>");
-                    response.getOutputStream().println("<div class='box' >");
-                    response.getOutputStream().println("<img class=\"img-rounded\" width='100px' height='100px'  src='" + girl.getImageUrl() + "' />");
-                    response.getOutputStream().println(girl.getName());
-                    response.getOutputStream().println("</div>");
+	                //response.getWriter().println("<style>.box {  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  width: 180px;   float: left;    margin: 8px;    padding: 8px;   -moz-box-shadow: 5px 5px 10px 3px #ccc; -webkit-box-shadow: 5px 5px 10px 3px #CCC;  box-shadow: 5px 5px 10px 3px #CCC;      padding: 8px 35px 8px 14px; margin-bottom: 18px;    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);  background-color: #FCF8E3;  border: 1px solid #FBEED5;  -webkit-border-radius: 4px; -moz-border-radius: 4px;    border-radius: 4px; color: #C09853;}</style>");
+                    response.getWriter().println("<div class='box' >");
+                    response.getWriter().println("<img class=\"img-rounded\" width='100px' height='100px'  src='" + girl.getImageUrl() + "' />");
+                    response.getWriter().println(girl.getName());
+                    response.getWriter().println("</div>");
 	            }
 	        }
 		}

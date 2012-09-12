@@ -33,6 +33,8 @@ public class ContentTypeFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletResponse resp = (HttpServletResponse) response;
+		
+		resp.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);
 		response.setContentType("text/html");
 		resp.setHeader("lunchTime", "12:00");

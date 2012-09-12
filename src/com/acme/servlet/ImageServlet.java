@@ -36,7 +36,7 @@ public class ImageServlet extends HttpServlet {
         String text = "";
          
         while ((text = reader.readLine()) != null) {
-            response.getOutputStream().println(text);
+            response.getWriter().println(text);
         }
 	}
 

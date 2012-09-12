@@ -31,7 +31,7 @@ public class HootersStartupListener implements ServletContextListener {
         girls.add(new Girl("lucy", 100, "B"));
         girls.add(new Girl("sindy", 120, "D"));
         girls.add(new Girl("michelle", 92, "C"));
-        girls.add(new Girl("lacy", 80, "B"));
+        girls.add(new Girl("Árvíztűrő tükörfúrógép", 80, "B"));
     }
 
 	/**

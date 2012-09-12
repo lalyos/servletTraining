@@ -28,20 +28,20 @@ public class OrderFormServlet extends BaseServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    response.setContentType("text/html");
-		response.getOutputStream().println();
+		response.getWriter().println();
 
-        response.getOutputStream().println("<form action='orderForm'  method='post' >");
-        response.getOutputStream().println("<br/>Food: <input type=\"text\" name=\"food\" />");
+        response.getWriter().println("<form action='orderForm'  method='post' >");
+        response.getWriter().println("<br/>Food: <input type=\"text\" name=\"food\" />");
         
         List<Girl> girls = getGirls();
         for (Girl girl : girls) {
-            response.getOutputStream().println("<br/><input type=\"image\" src=\"" 
+            response.getWriter().println("<br/><input type=\"image\" src=\"" 
         + girl.getImageUrl() 
         + "\" width=\"100\" height=\"100\" name=\"girl\" value=\""
         + girl.getName()
         + "\" />");            
         }
-        response.getOutputStream().println("</form>");		
+        response.getWriter().println("</form>");		
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class OrderFormServlet extends BaseServlet {
 		Map<Long, Order> orders = getOrders();
 		orders.put(order.getId(), order);
 		
-		response.getOutputStream().println(String.format("Dear %s your order of %s has been accepted. %s will serv you. <br/>",
+		response.getWriter().println(String.format("Dear %s your order of %s has been accepted. %s will serv you. <br/>",
 		        customer, food, girlName ));
 		
 		doGet(request, response);

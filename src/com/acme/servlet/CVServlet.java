@@ -51,14 +51,14 @@ public class CVServlet extends BaseServlet {
 		String name = request.getParameter("name");
 		
 		if (breast > 90) {
-		    response.getOutputStream().println("Welcome in the Hooters team : " + name );
+		    response.getWriter().println("Welcome in the Hooters team : " + name );
 		    
 		    Girl girl = new Girl(name, breast, request.getParameter("basket"));
 		    List<Girl> girls = getGirls();
 		    girls.add(girl);
 		    
 		} else{
-            response.getOutputStream().println("Sorry " + name + " we don't have any open position.");
+            response.getWriter().println("Sorry " + name + " we don't have any open position.");
 		    
 		}
     }

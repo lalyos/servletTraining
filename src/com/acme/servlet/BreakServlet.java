@@ -38,9 +38,9 @@ public class BreakServlet extends HttpServlet {
         long minutesLeft = (breakTime.getTime() - now.getTime()) / 60000;
         minutesLeft = (isBefore ? minutesLeft : -1 * minutesLeft);
         
-        response.getOutputStream().println("<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Servlet Training</title></head><body>");
-        response.getOutputStream().println(message + " : " + minutesLeft);
-        response.getOutputStream().println("</body></html>");
+        response.getWriter().println("<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Servlet Training</title></head><body>");
+        response.getWriter().println(message + " : " + minutesLeft);
+        response.getWriter().println("</body></html>");
 	}
 
 	/**

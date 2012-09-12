@@ -32,15 +32,15 @@ public class OrderListServlet extends BaseServlet {
 	      Map<Long, Order> orders = getOrders();
 
 	      response.setContentType("text/html");
-          response.getOutputStream().println("<h2>list of Orders</h2> <table class=\"table table-striped\" >");
+          response.getWriter().println("<h2>list of Orders</h2> <table class=\"table table-striped\" >");
 
-          response.getOutputStream().println("<thead><tr><th>#</th> <th>girl</th> <th>food</th> <th>state</th> </tr></thead>");
+          response.getWriter().println("<thead><tr><th>#</th> <th>girl</th> <th>food</th> <th>state</th> </tr></thead>");
 
 	      for (Order order : orders.values()) {
-	           response.getOutputStream().println(String.format("<tr><td>%d</td> <td>%s</td> <td>%s</td> <td>%s</td> </tr>"
+	           response.getWriter().println(String.format("<tr><td>%d</td> <td>%s</td> <td>%s</td> <td>%s</td> </tr>"
 	                   ,order.getId() ,order.getGirl().getName() ,order.getFood() ,getStateHtml(order.getIsFulfilled()) ));
 	      }
-          response.getOutputStream().println("</table>");
+          response.getWriter().println("</table>");
           includeResource(response, "WEB-INF/boot-foot");
 
 	}

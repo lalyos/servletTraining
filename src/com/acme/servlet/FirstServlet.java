@@ -25,11 +25,11 @@ public class FirstServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    
-	    //response.getOutputStream().println("<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Servlet Training</title></head><body>");
-        response.getOutputStream().println("my first eclipse servlet");
+	    //response.getWriter().println("<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Servlet Training</title></head><body>");
+        response.getWriter().println("my first eclipse servlet");
         String servletContext = request.getContextPath();
-        response.getOutputStream().println("<br> <a href=\"" + servletContext  + "/index.html\"> home</a>");
-        //response.getOutputStream().println("</body></html>");
+        response.getWriter().println("<br> <a href=\"" + servletContext  + "/index.html\"> home</a>");
+        //response.getWriter().println("</body></html>");
         
         //response.setContentType("text/html");
         response.setHeader("Content-Type", "text/html");

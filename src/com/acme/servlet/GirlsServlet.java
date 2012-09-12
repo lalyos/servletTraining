@@ -29,11 +29,11 @@ public class GirlsServlet extends BaseServlet {
 	    includeResource(response, "WEB-INF/boot-head");
 		List<Girl> girls = getGirls();
 		if(girls == null || girls.isEmpty()) {
-		    response.getOutputStream().println("<h2>No girls yet.</h2>");
+		    response.getWriter().println("<h2>No girls yet.</h2>");
 		} else {
-            response.getOutputStream().println("<h2>List of girls</h2> <ul class=\"thumbnails\">");
+            response.getWriter().println("<h2>List of girls</h2> <ul class=\"thumbnails\">");
     		for (Girl girl : girls) {
-                response.getOutputStream().println("<li class=\"span2\"><div class=\"thumbnail\"><img src=\"" 
+                response.getWriter().println("<li class=\"span2\"><div class=\"thumbnail\"><img src=\"" 
                         + girl.getImageUrl() 
                         + "\" alt=\"\">" 
                         + girl.getName() 
@@ -44,7 +44,7 @@ public class GirlsServlet extends BaseServlet {
 //    		    request.setAttribute("name", girl.getName());
 //    		    dispatcher.include(request, response);
             }
-            response.getOutputStream().println("</ul");
+            response.getWriter().println("</ul");
             response.setContentType("text/html");
 		}
 	      includeResource(response, "WEB-INF/boot-foot");

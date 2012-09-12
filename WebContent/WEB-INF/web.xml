@@ -220,4 +220,14 @@
     <url-pattern>/*</url-pattern>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EncodingTestServlet</display-name>
+    <servlet-name>EncodingTestServlet</servlet-name>
+    <servlet-class>com.acme.servlet.EncodingTestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EncodingTestServlet</servlet-name>
+    <url-pattern>/EncodingTestServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

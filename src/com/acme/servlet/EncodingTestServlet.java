@@ -1,27 +1,21 @@
 package com.acme.servlet;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.ServletException;
-import javax.servlet.SingleThreadModel;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CoffeServlet
+ * Servlet implementation class EncodingTestServlet
  */
-public class CoffeServlet extends HttpServlet {
+public class EncodingTestServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CoffeServlet() {
+    public EncodingTestServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,21 +25,13 @@ public class CoffeServlet extends HttpServlet {
      *      response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Date now = new Date();
-        Date coffee = null;
-        try {
-            coffee = sdf.parse(getInitParameter("coffeeTime"));
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        String out = request.getParameter("out");
+        if(out != null && out.equals("writer")) {
+            response.getWriter().println("Árvíztűrő tükörfúrógép");            
+        } else {
+            response.getWriter().println("Árvíztűrő tükörfúrógép");
         }
-        long minutesLeft = (coffee.getTime() - now.getTime()) / 60000;
-        response.getWriter().println("<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Servlet Training</title></head><body>");
-        response.getWriter().println("Minutes left till coffee break: " + minutesLeft);
-        response.getWriter().println("</body></html>");
-
     }
-
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

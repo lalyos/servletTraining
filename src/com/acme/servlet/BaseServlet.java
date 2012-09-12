@@ -65,7 +65,7 @@ public class BaseServlet extends HttpServlet {
 
         try {
             while ((text = reader.readLine()) != null) {
-                response.getOutputStream().println(text);
+                response.getWriter().println(text);
             }
         } catch (IOException e) {
             e.printStackTrace();
