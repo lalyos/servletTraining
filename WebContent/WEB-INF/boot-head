@@ -42,8 +42,8 @@
           <a class="brand" href="#">Hooters</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Grils</a></li>
-              <li><a href="#about">About</a></li>
+              <li class="active"><a href="girls">Grils</a></li>
+              <li><a href="orders">Orders</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
