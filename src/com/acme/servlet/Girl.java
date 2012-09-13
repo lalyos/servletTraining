@@ -29,7 +29,9 @@ public class Girl {
     }
     
     private static Random rnd = new Random();
-    
+
+    public Girl() {
+    }
     public Girl(String name, int breastSize, String basket) {
         super();
         this.name = name;
