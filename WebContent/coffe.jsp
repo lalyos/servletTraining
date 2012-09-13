@@ -15,7 +15,6 @@ long getMinutes() {
     Date now = new Date();
     return (coffe.getTime() - now.getTime()) / 60000;
 
-}
 %>
 
 <%@include file="/WEB-INF/boot-head" %>
