@@ -4,6 +4,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="b" %>
+
 
 <%!protected List<Girl> getGirls() {
         List<Girl> girls = (List<Girl>) getServletContext().getAttribute(BaseServlet.GIRLS);
@@ -64,14 +66,13 @@
     }
 %>
 
-
+v1.12
 <form class="form-horizontal" method="POST">
-  <div class="control-group">
-    <label class="control-label" for="name">Name</label>
-    <div class="controls">
-      <input type="text" id="name" name="name" placeholder="Your name">
-    </div>
-  </div>
+
+<b:input name="name" placeholder="Your focking name" onclick="kaka" onVerySpecialFokinAttribute="true" />
+  
+  
+  
   <div class="control-group  <%=errorMessage != null ? "error" : ""%>">
     <label class="control-label" for="breast">Breast</label>
     <div class="controls">

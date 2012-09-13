@@ -31,13 +31,13 @@ public class Girl {
     private static Random rnd = new Random();
 
     public Girl() {
+        this.imageUrl = imageUrls[rnd.nextInt(imageUrls.length)]; 
     }
     public Girl(String name, int breastSize, String basket) {
-        super();
+        this();
         this.name = name;
         this.breastSize = breastSize;
         this.basket = basket;
-        this.imageUrl = imageUrls[rnd.nextInt(imageUrls.length)]; 
     }
     
     private static String[] imageUrls = {"http://images.sodahead.com/polls/001850297/hooters-girl-46990651739_xlarge.jpeg"

@@ -10,9 +10,9 @@
     </div>
   </div>
   <div class="control-group ">
-    <label class="control-label" for="breast">Breast</label>
+    <label class="control-label" for="breastSize">Breast</label>
     <div class="controls">
-      <input type="text" id="breast" name="breast" placeholder="breast size in cm">      
+      <input type="text" id="breastSize" name="breastSize" placeholder="breast size in cm">      
     </div>
   </div>
 
