@@ -1,3 +1,5 @@
+<h2><fmt:message key="title.myorders" /></h2>
+
 <c:if test="${not empty param.orderId }">
   <e:fullfill orderId="${param.orderId}" />
 </c:if>
