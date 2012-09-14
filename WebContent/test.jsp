@@ -1,5 +1,15 @@
+<%@taglib tagdir="/WEB-INF/tags"  prefix="e"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@include file="/WEB-INF/boot-head" %>
+
+<e:reverse top="5" bottom="1" var="number">
+<li> ${number}. kave
+</e:reverse>
+
+<hr/>
+number= ${number}
+<hr/>
 
 <c:set var="x" scope="session" value="5" />
 
@@ -7,8 +17,6 @@ v1.1
 <c:url value="fire.jsp" var="fireUrl" >
   <c:param name="girlName" value="suzy"></c:param>
 </c:url>
-
-<jsp:include page=""></jsp:include>
 
 
 <hr/>
