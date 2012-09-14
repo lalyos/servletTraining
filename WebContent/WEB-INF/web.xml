@@ -239,4 +239,13 @@
     <location>/errorParse.jsp</location>
    
    </error-page>
+   
+   <jsp-config>
+   <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <include-prelude>/WEB-INF/start.inc</include-prelude>
+      <include-coda>/WEB-INF/end.inc</include-coda>
+      
+   </jsp-property-group>
+   </jsp-config>
 </web-app>

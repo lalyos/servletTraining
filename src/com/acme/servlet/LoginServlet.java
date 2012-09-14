@@ -30,7 +30,7 @@ public class LoginServlet extends BaseServlet {
 	    
 	    try {
 	        Girl girl = getGirlByName(userName);
-            request.getRequestDispatcher("/myOrders").forward(request, response);
+	        response.sendRedirect("myOrders.jsp");
 	    } catch (RuntimeException e) {
             request.getRequestDispatcher("/orderForm").forward(request, response);	        
 	    }

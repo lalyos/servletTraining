@@ -59,5 +59,11 @@ public class Order {
         // TODO Auto-generated method stub
         return this.state == OrderState.FULLFILLED;
     }
+    public OrderState getState() {
+        return state;
+    }
+    public void setState(OrderState state) {
+        this.state = state;
+    }
     
 }
