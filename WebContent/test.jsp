@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@include file="/WEB-INF/boot-head" %>
 
-<e:reverse top="5" bottom="1" var="number">
+<e:reverse top="10" bottom="3" var="number">
 <li> ${number}. kave
 </e:reverse>
 
